@@ -1,14 +1,14 @@
 # Typescript, NestJS, and Angular
 
-This is a set of three projects designed to help you gain real-world proficiency
-with projects that use Typescript, NestJS, and Angular.
+These materials are designed to help you gain real-world proficiency with
+projects that use Typescript, NestJS, and Angular.
 
-1. A small set of Typescript exercises to get your hands dirty.
-2. A NestJS backend server with one route implemented.
-3. An Angular frontend that displays the output of the NestJS route.
+First, watch the introductory video. 
 
-The NestJS and Angular projects come together to form a seed repository for you
-to build on to create this project:
+Next, you may work through the [`01_typescript/`](01_typescript) directory to
+get started with the Typescript, unless you know it already.
+
+After this, work on the project below.
 
 > # Real-time Crypto Prices using NestJS and Angular
 > 
@@ -29,7 +29,37 @@ to build on to create this project:
 > * Filters
 > * WebSockets
 
+There is a seed codebase in `02_nestjs` and `03_angular` to get you started and
+videos talking through the key points of the codebase
+[here](#introduction--walkthrough-video).
+
+## Seed Project Setup
+
+```shell
+; cd 02_nestjs               # For the backend
+; npm install -g @nestjs/cli # Install the NestJS CLI
+; npm install                # Install dependencies
+; code .env                  # Add the API key according to instructions
+; npm run test               # Run unit tests
+; npm run test:e2e           # Run end-to-end integration tests
+; npm run start
+# Server will start, to verify visit http://localhost:3000/price?from=BTC&to=USD
+```
+
+```shell
+# In a new terminal
+; cd 03_angular               # For the frontend
+; npm install -g @angular/cli # Install the Angular CLI
+; npm install                 # Install dependencies
+; npm run test                # Run the tests (in Chrome)
+; npm run start
+# Server will start, to verify visit http://localhost:4200/
+```
+
 ## Introduction & Walkthrough Video
+
+[Project Introduction Video](https://youtu.be/JO7JguGd11I) including project
+architecture walkthrough.
 
 ## Things you'll need to learn
 
@@ -73,25 +103,3 @@ in with your coach if you are unsure.
   - [ ] Angular Routing
   - [ ] CSS in Angular
 
-## Seed Project Setup
-
-```shell
-; cd 02_nestjs               # For the backend
-; npm install -g @nestjs/cli # Install the NestJS CLI
-; npm install                # Install dependencies
-; code .env                  # Add the API key according to instructions
-; npm run test               # Run unit tests
-; npm run test:e2e           # Run end-to-end integration tests
-; npm run start
-# Server will start, to verify visit http://localhost:3000/price?from=BTC&to=USD
-```
-
-```shell
-# In a new terminal
-; cd 03_angular               # For the frontend
-; npm install -g @angular/cli # Install the Angular CLI
-; npm install                 # Install dependencies
-; npm run test                # Run the tests (in Chrome)
-; npm run start
-# Server will start, to verify visit http://localhost:4200/
-```
