@@ -3,7 +3,7 @@
 These materials are designed to help you gain real-world proficiency with
 projects that use Typescript, NestJS, and Angular.
 
-First, watch the introductory video. 
+[First, watch the introductory video.](https://youtu.be/JO7JguGd11I)
 
 Next, you may work through the [`01_typescript/`](01_typescript) directory to
 get started with the Typescript, unless you know it already.
