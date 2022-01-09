@@ -33,6 +33,30 @@ There is a seed codebase in `02_nestjs` and `03_angular` to get you started and
 videos talking through the key points of the codebase
 [here](#introduction--walkthrough-video).
 
+## Tickets
+
+Work through the following tickets.
+
+Every feature must include tests, as is specified by BCB above.
+
+1. **Display the price of BTC, ETH, and XRP coins in USD on the frontend.**  
+   This display should update once every 10 seconds.
+
+2. **Display the price of BTC, ETH, and XRP coins in USD, GBP, and EUR.**  
+   Represent this as a table with crypto coins along the top currencies along
+   the side.
+
+3. **Add the following coins and currencies.**  
+   Coins: BTC, ETH, XRP, LTC, BCH, and ETC.  
+   Currencies: USD, GBP, EUR, JPY, and ZAR.
+
+4. **Add a small line chart for each coin/currency pair displaying the price
+   history for the past 24 hours.**  
+   You may wish to use a charts library for this, or develop a custom component
+   of your own
+
+5. **Make the interface update close to real-time using Websockets.**
+
 ## Seed Project Setup
 
 ```shell
