@@ -4,7 +4,6 @@ import { PriceController } from './price/price.controller';
 import { PriceService } from './price/price.service';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
-import { CronService } from './cron/cron.service';
 
 @Module({
   imports: [
@@ -13,6 +12,6 @@ import { CronService } from './cron/cron.service';
     ScheduleModule.forRoot()
   ],
   controllers: [PriceController],
-  providers: [PriceService, CronService],
+  providers: [PriceService],
 })
 export class AppModule {}
