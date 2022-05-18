@@ -1,3 +1,92 @@
-<price-display from="BTC" to="USD"></price-display>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#price-display {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
 
-<router-outlet></router-outlet>
+#price-display td, #price-display th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#price-display tr:nth-child(even){background-color: #f2f2f2;}
+
+#price-display tr:hover {background-color: #ddd;}
+
+#price-display th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #ff91cd;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>Real-time Crypto Prices</h1>
+
+<table id="price-display">
+  <tr>
+    <th>CURRENCY</th>
+    <th>BTC</th>
+    <th>ETH</th>
+    <th>XRP</th>
+    <th>LTC</th>
+    <th>BCH</th>
+    <th>ETC</th>
+  </tr>
+  <tr>
+    <td>USD</td>
+    <td><price-display from="BTC" to="USD"></price-display></td>
+    <td><price-display from="ETH" to="USD"></price-display></td>
+    <td><price-display from="XRP" to="USD"></price-display></td>
+    <td><price-display from="LTC" to="USD"></price-display></td>
+    <td><price-display from="BCH" to="USD"></price-display></td>
+    <td><price-display from="ETC" to="USD"></price-display></td>
+  </tr>
+  <tr>
+    <td>GBP</td>
+    <td><price-display from="BTC" to="GBP"></price-display></td>
+    <td><price-display from="ETH" to="GBP"></price-display></td>
+    <td><price-display from="XRP" to="GBP"></price-display></td>
+    <td><price-display from="LTC" to="GBP"></price-display></td>
+    <td><price-display from="BCH" to="GBP"></price-display></td>
+    <td><price-display from="ETC" to="GBP"></price-display></td>
+  </tr>
+  <tr>
+    <td>EUR</td>
+    <td><price-display from="BTC" to="EUR"></price-display></td>
+    <td><price-display from="ETH" to="EUR"></price-display></td>
+    <td><price-display from="XRP" to="EUR"></price-display></td>
+    <td><price-display from="LTC" to="EUR"></price-display></td>
+    <td><price-display from="BCH" to="EUR"></price-display></td>
+    <td><price-display from="ETC" to="EUR"></price-display></td>
+  </tr>
+  <tr>
+    <td>JPY</td>
+    <td><price-display from="BTC" to="JPY"></price-display></td>
+    <td><price-display from="ETH" to="JPY"></price-display></td>
+    <td><price-display from="XRP" to="JPY"></price-display></td>
+    <td><price-display from="LTC" to="JPY"></price-display></td>
+    <td><price-display from="BCH" to="JPY"></price-display></td>
+    <td><price-display from="ETC" to="JPY"></price-display></td>
+  </tr>
+  <tr>
+    <td>ZAR</td>
+    <td><price-display from="BTC" to="ZAR"></price-display></td>
+    <td><price-display from="ETH" to="ZAR"></price-display></td>
+    <td><price-display from="XRP" to="ZAR"></price-display></td>
+    <td><price-display from="LTC" to="ZAR"></price-display></td>
+    <td><price-display from="BCH" to="ZAR"></price-display></td>
+    <td><price-display from="ETC" to="ZAR"></price-display></td>
+  </tr>
+</table>
+</body>
+</html>
+<!-- <router-outlet></router-outlet> -->

@@ -22,6 +22,8 @@
 //
 // Let's get started!
 
+import { ClassificationType, NoSubstitutionTemplateLiteral } from "typescript";
+
 describe("What is typescript?", () => {
 
   it("trivially passes", () => {
@@ -35,13 +37,13 @@ describe("What is typescript?", () => {
     Uncomment the test below and make it pass.
   */
 
-  // it("is based on ordinary Javascript", () => {
-  //   function greetKay() {
-  //     // ...
-  //   }
-  //
-  //   expect(greetKay()).toEqual("Hello, Kay!");
-  // });
+  it("is based on ordinary Javascript", () => {
+    function greetKay() {
+      return "Hello, Kay!"
+    }
+  
+    expect(greetKay()).toEqual("Hello, Kay!");
+  });
 
   /*
     Typescript builds on JS.
@@ -77,30 +79,30 @@ describe("What is typescript?", () => {
     Uncomment the tests below and make them pass.
   */
 
-  // it("adds type annotations 1", () => {
-  //   function greet(name) {
-  //     // ...
-  //   }
-  //
-  //   expect(greet("Kay")).toEqual("Hello, Kay!");
-  // });
+  it("adds type annotations 1", () => {
+    function greet(name: string) {
+      return `Hello, ${name}!`;
+    }
+  
+    expect(greet("Kay")).toEqual("Hello, Kay!");
+  });
 
-  // it("adds type annotations 2", () => {
-  //   function power(num, exp) {
-  //     return num ** exp;
-  //   }
-  //
-  //   expect(power(2, 8)).toEqual(256);
-  // });
+  it("adds type annotations 2", () => {
+    function power(num: number, exp: number) {
+      return num ** exp;
+    }
+  
+    expect(power(2, 8)).toEqual(256);
+  });
 
-  // it("adds type annotations 3", () => {
-  //   function and(a, b) {
-  //     return a && b;
-  //   }
-  //
-  //   expect(and(true, true)).toEqual(true);
-  //   expect(and(true, false)).toEqual(false);
-  // });
+  it("adds type annotations 3", () => {
+    function and(a: boolean, b: boolean) {
+      return a && b;
+    }
+  
+    expect(and(true, true)).toEqual(true);
+    expect(and(true, false)).toEqual(false);
+  });
 
   /*
     We can also use type annotations to describe more complex types, like arrays
@@ -126,22 +128,22 @@ describe("What is typescript?", () => {
     Uncomment the following tests and make them pass.
   */
 
-  // it("adds type annotations 4", () => {
-  //   function sum(list) {
-  //     return list.reduce((a, b) => a + b);
-  //   }
-  //
-  //   expect(sum([1, 2, 3])).toEqual(6);
-  // });
+  it("adds type annotations 4", () => {
+    function sum(list: number[]) {
+      return list.reduce((a, b) => a + b);
+    }
+  
+    expect(sum([1, 2, 3])).toEqual(6);
+  });
 
-  // it("adds type annotations 5", () => {
-  //   function greetFancy(person) {
-  //     return `Greetings, ${person.name} of ${person.origin}.`
-  //   }
-  //
-  //   expect(greetFancy({ name: "Frodo", origin: "The Shire"}))
-  //     .toEqual("Greetings, Frodo of The Shire");
-  // });
+  it("adds type annotations 5", () => {
+    function greetFancy(person: ({name: string, origin: string})) {
+      return `Greetings, ${person.name} of ${person.origin}.`
+    }
+  
+    expect(greetFancy({ name: "Frodo", origin: "The Shire"}))
+      .toEqual("Greetings, Frodo of The Shire.");
+  });
 
   /*
     Here's an interesting question — in the above examples, how does Typescript
@@ -157,13 +159,13 @@ describe("What is typescript?", () => {
     Uncomment the following test and make it pass.
   */
 
-  // it("adds type annotations 6", () => {
-  //   function greet(name: string): number {
-  //     return `Hello ${name}`;
-  //   }
-  //
-  //   expect(greet("Kay")).toEqual("Hello Kay");
-  // })
+  it("adds type annotations 6", () => {
+    function greet(name: string): string {
+      return `Hello ${name}`;
+    }
+  
+    expect(greet("Kay")).toEqual("Hello Kay");
+  });
 
   /*
     What if you want to write a function where you don't know the type? For
@@ -199,14 +201,14 @@ describe("What is typescript?", () => {
     Uncomment this test and make it pass.
   */
 
-  // it("adds type annotations 7", () => {
-  //   function flatten(lists: number[][]): number[] {
-  //     return lists.reduce((a, b) => [...a, ...b]);
-  //   }
-  //
-  //   expect(flatten([[1, 2], [3, 4], [5, 6]])).toEqual([1, 2, 3, 4, 5, 6]);
-  //   expect(flatten([['a', 'b'], ['c', 'd'], ['e', 'f']])).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
-  // });
+  it("adds type annotations 7", () => {
+    function flatten<T>(lists: T[][]): T[] {
+      return lists.reduce((a, b) => [...a, ...b]);
+    }
+  
+    expect(flatten([[1, 2], [3, 4], [5, 6]])).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(flatten([['a', 'b'], ['c', 'd'], ['e', 'f']])).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
+  });
 
   /*
     Finally, we can also describe the types of classes and functions in
@@ -234,67 +236,81 @@ describe("What is typescript?", () => {
     Uncomment the following tests and make them pass.
   */
 
-  // it("has interfaces 1", () => {
-  //   interface PersonModel {
-  //     setName(name: string): void;
-  //     getName(): string;
-  //   }
-  //
-  //   class Person implements PersonModel {
-  //
-  //   }
-  //
-  //   let person = new Person();
-  //   person.setName("Kay");
-  //   expect(person.getName()).toEqual("Kay");
-  // });
+  it("has interfaces 1", () => {
+    interface PersonModel {
+      setName(name: string): void;
+      getName(): string;
+    }
+  
+    class Person implements PersonModel {
+      name: string;
 
-  // it("has interfaces 2", () => {
-  //   // This is a little trickier.
-  //
-  //   interface Equatable {
-  //     equals(other: Equatable): boolean;
-  //   }
-  //
-  //   class Cat implements Equatable {
-  //     // Note that instance variables need to be defined in the class in order
-  //     // to let you access them using `this.variable`. Like this:
-  //     name: string;
-  //
-  //     constructor(name: string) {
-  //       this.name = name;
-  //     }
-  //   }
-  //
-  //   class Dog implements Equatable {
-  //     // ...
-  //   }
+      constructor() {
+        this.name = '';
+      }
+    
+      setName(name: string): void {
+        this.name = name;
+      }
 
-  //   let moggy = new Cat("Moggy");
-  //   let moggy2 = new Cat("Moggy");
-  //   let felix = new Cat("Felix");
-  //   let felixTheDog = new Dog("Felix");
-  //
-  //   // Equatable objects should be equal to other objects if:
-  //   //   - They are the same class (you can test this using `instanceof`)
-  //   //     AND
-  //   //   - They have the same name
-  //   // Otherwise they are not equal.
-  //
-  //   // Cats are equal to other cats with the same name
-  //   expect(moggy.equals(moggy2)).toBeTruthy();
-  //   expect(moggy2.equals(moggy)).toBeTruthy();
-  //
-  //   // Cats aren't equal to other cats with different names
-  //   expect(moggy.equals(felix)).toBeFalsy();
-  //   expect(felix.equals(moggy)).toBeFalsy();
-  //
-  //   // Cats aren't equal to dogs with the same name
-  //   expect(felix.equals(felixTheDog)).toBeFalsy();
-  //   expect(felixTheDog.equals(felix)).toBeFalsy();
-  // });
+      getName(): string {
+        return this.name;
+      }
+    }
 
-  /*
-    Congrats! Move onto the next part of the project.
-  */
+    
+  
+    let person = new Person();
+    person.setName("Kay");
+    expect(person.getName()).toEqual("Kay");
+  });
+
+
+// next test:
+
+
+  it("has interfaces 2", () => {
+    interface Equatable {
+      name: string;
+      equals(other: Equatable): boolean;
+    }
+  
+    class Cat implements Equatable {
+      name: string;
+  
+      constructor(name: string) {
+        this.name = name;
+      }
+
+      equals(other: Equatable): boolean {
+        return this.name === other.name && other instanceof Cat; 
+      }
+    }
+  
+    class Dog implements Equatable {
+      name: string;
+  
+      constructor(name: string) {
+        this.name = name;
+      }
+
+      equals(other: Equatable): boolean {
+        return this.name === other.name && other instanceof Dog; 
+      }
+    }
+
+    let moggy = new Cat("Moggy");
+    let moggy2 = new Cat("Moggy");
+    let felix = new Cat("Felix");
+    let felixTheDog = new Dog("Felix");
+  
+    expect(moggy.equals(moggy2)).toBeTruthy();
+    expect(moggy2.equals(moggy)).toBeTruthy();
+  
+    expect(moggy.equals(felix)).toBeFalsy();
+    expect(felix.equals(moggy)).toBeFalsy();
+  
+    expect(felix.equals(felixTheDog)).toBeFalsy();
+    expect(felixTheDog.equals(felix)).toBeFalsy();
+  });
 });

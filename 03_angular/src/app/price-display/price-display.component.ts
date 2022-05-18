@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PriceService } from '../price.service';
+import { timer } from 'rxjs';
+
 
 @Component({
   selector: 'price-display',
@@ -14,7 +16,9 @@ export class PriceDisplayComponent implements OnInit {
   constructor(private priceService: PriceService) {}
 
   ngOnInit(): void {
-    this.loadPriceData();
+    const data = timer(0,10000);
+    data.subscribe(() => { this.loadPriceData(); 
+    });
   }
 
   loadPriceData() {

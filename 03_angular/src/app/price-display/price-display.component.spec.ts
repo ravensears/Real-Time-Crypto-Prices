@@ -1,8 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, discardPeriodicTasks, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/internal/observable/of';
 import { PriceService } from '../price.service';
-
 import { PriceDisplayComponent } from './price-display.component';
 
 describe('PriceDisplayComponent', () => {
@@ -27,7 +26,7 @@ describe('PriceDisplayComponent', () => {
     expect(component.loading).toBe(true);
   });
 
-  it('sets price when loaded', () => {
+  it('sets price when loaded', fakeAsync(() => {
     let priceServiceMock = jasmine.createSpyObj('PriceService', ['getPrice'])
     priceServiceMock.getPrice.and.returnValue(of(44.44));
     TestBed.overrideProvider(PriceService, { useValue: priceServiceMock });
@@ -36,6 +35,31 @@ describe('PriceDisplayComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
+    tick();
     expect(component.price).toBe(44.44);
-  })
+    discardPeriodicTasks();
+  }))
+
+  it('updates price after 10 seconds', fakeAsync(() => {
+    let priceServiceMock = jasmine.createSpyObj('PriceService', ['getPrice'])
+    priceServiceMock.getPrice.and.returnValue(of(44.44));
+    TestBed.overrideProvider(PriceService, { useValue: priceServiceMock });
+
+    fixture = TestBed.createComponent(PriceDisplayComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // tick() acts to move the time forward in your fakeAsync context.
+    // flush() acts to simulate the completion of time in that context by draining the macrotask queue till it is empty.
+    // discardPeriodicTasks() "throws out" any remaining periodic tasks.
+    
+    tick(9000);
+    expect(component.price).toBe(44.44);
+
+    priceServiceMock.getPrice.and.returnValue(of(55.55));
+
+    tick(10000);
+    expect(component.price).toBe(55.55);
+    discardPeriodicTasks();
+  }))
 });
